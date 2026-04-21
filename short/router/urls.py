@@ -28,8 +28,7 @@ def get_user_url(short_url:str,db:Session=Depends(get_db)):
     if not get_long_url:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=f"{short_url} is not found")
     return get_long_url
-
-
+ 
 @router.put("/{short_url}",response_model=schemas.GetUrl)
 def update_url(short_url:str,url:schemas.UrlCreate,db:Session=Depends(get_db)):
     
@@ -48,7 +47,7 @@ def update_url(short_url:str,url:schemas.UrlCreate,db:Session=Depends(get_db)):
 
 
 @router.delete("/{short_url}")
-def delete_url(short_url:str,db:Session=Depends(get_db)):
+def delete_url(short_url:int,db:Session=Depends(get_db)):
     delete_long_url = db.query(models.ShortUrl).filter(
         models.ShortUrl.short_url == short_url
         )
@@ -58,6 +57,7 @@ def delete_url(short_url:str,db:Session=Depends(get_db)):
     db.delete(deleted)
     db.commit()
     return deleted
+
 
 
 

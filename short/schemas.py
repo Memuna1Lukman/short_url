@@ -19,3 +19,18 @@ class GetUrl(BaseModel):
     updated_at: Optional[datetime] = None
 
     model_config = {"from_attributes": True}
+
+
+class CountClicks(BaseModel):
+    id:  Optional[int] = None
+    access_count : Optional[int] = None
+    created_at : Optional[datetime] = None
+    clicked_at:  Optional[datetime] = None
+
+
+class Count(BaseModel):
+    id:  Optional[int] = None
+    access_count : Optional[int] = None
+    created_at : Optional[datetime] = None
+    clicked_at:  Optional[datetime] = None
+    model_config = {"from_attributes": True}
