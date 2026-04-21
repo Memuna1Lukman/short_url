@@ -6,7 +6,7 @@ from datetime import datetime
 class UrlCreate(BaseModel):
     id: Optional[int] = None
     long_url: str
-    short_url: str
+    short_url: Optional[str] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
 
@@ -14,7 +14,7 @@ class UrlCreate(BaseModel):
 class GetUrl(BaseModel):
     id: Optional[int] = None
     long_url: str
-    short_url: str
+    short_url: Optional[str] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
 
